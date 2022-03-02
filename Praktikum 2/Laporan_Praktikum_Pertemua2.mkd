@@ -1,0 +1,283 @@
+# **Algoritma dan Struktur Data** #
+**Nama  : Andhito Galih Nur Cahyo**
+
+**Kelas : 1F**
+
+**No Absen : 06**
+
+**NIM   : 2141720138**
+
+---
+**JOBSHEET II OBJEK**
+
+**2.2 Deklarasi Class, Atribut dan Method**
+
+**2.2.3 Pertanyaan**
+
+1. Sebutkan 2 karakteristik class/objek!
+
+   **Jawab:** Atribut dan Method
+
+2. Kata kunci apakah yang digunakan untuk mendeklarasikan class?
+
+   **Jawab:** class diikuti namaClass
+
+3. Perhatikan class **Barang** yang ada di Praktikum di atas, ada berapa atribut yang dimiliki oleh class tersebut? Sebutkan! Dan pada baris berapa saja deklarasi atribut dilakukan?
+
+   **Jawab:** Ada 4 atribut, yaitu:
+
+   - namaBarang dan jenisBarang bertipe data String pada baris ke-13 
+
+   - stok dan hargaSatuan bertipe data int pada baris ke-14
+
+4. Ada berapa method yang dimiliki oleh class tersebut? Sebutkan! Dan pada baris berapa saja deklarasi method dilakukan?
+
+   **Jawab:** Ada 4 method, yakni:
+
+   - tampilBarang() bertipe data void baris ke-16
+
+   - tambahStok(int n) bertipe data void baris ke-23
+
+   - kurangiStok(int n) bertipe data void  baris ke-27
+
+   - hitungHargaTotal(int jumlah) bertipe data int baris ke-31
+
+5. Perhatikan method **kurangiStok()** yang ada di class Barang, modifikasi isi method tersebut sehingga proses pengurangan hanya dilakukan jika stok masih ada (masih lebih besar dari 0)
+
+   **Jawab:**
+
+   ```
+   void kurangiStok(int n){
+        if(stok >0){
+            stok=stok-n;
+        }
+    }
+   ```
+
+6. Menurut Anda, mengapa method **tambahStok()** dibuat dengan memiliki 1 parameter berupa bilangan int?
+
+   **Jawab:** Karena pada method **tambahStok()** digunakan untuk menambahkan stok dengan satu variabel saja yaitu n, yang mana n tersebut digunakan untuk inputan jumlah stok yang ingin ditambahkan
+
+7. Menurut Anda, mengapa method **hitungHargaTotal()** memiliki tipe data int?
+
+   **Jawab:** Karena pada method **hitungHargaTotal()** digunakan untuk menghitung harga total dengan menginputkan jumlah barang yang dibeli lalu dikalikan dengan harga satuan yang telah ditentukan sehingga hasilnya akan digunakan pada method yang lain dengan kata lain method pada **hitungHargaTotal()** membutuhkan tipe data kembalian
+
+8. Menurut Anda, mengapa method **tambahStok()** memiliki tipe data void?
+
+   **Jawab:** Karena pada method **tambahStok()** tidak membutuhkan tipe data kembalian
+
+**2.3.2 Verifikasi Hasil Percobaan**
+
+![Output 2.1](Screenshot/2.1.jpg)
+
+**2.3 Instansiasi Objek dan Mengakses Atribut & Method**
+
+**2.3.3 Pertanyaan**
+
+1. Pada class **BarangMain**, pada baris berapakah proses instansiasi dilakukan? Dan apa nama objek yang dihasilkan?
+
+   **Jawab:** Proses instansiasi berada pada baris ke-13  dan menghasilkan nama objek, yaitu **b1**.
+
+2. Bagaimana cara mengakses atribut dan method dari suatu objek?
+
+   **Jawab:**
+
+   - Cara mengakses atribut dari suatu objek:
+   
+       namaObjek.namaAtribut = nilai;
+   
+   - Cara mengakses method dari suatu objek:
+
+       namaObjek.namaMethod();
+
+**2.4.2 Verifikasi Hasil Percobaan**
+
+![Output 2.2](Screenshot/2.2.jpg)
+
+**2.4 Membuat Konstruktor**
+
+**2.4.3 Pertanyaan**
+
+1. Perhatikan class **Barang** yang ada di Praktikum 2.4.1, pada baris berapakah deklarasi konstruktor berparameter dilakukan?
+
+   **Jawab:** deklarasi konstruktor berparameter dilakukan pada baris ke-18, yakni:
+
+```
+    Barang(String nm, String jn, int st, int hs){
+        namaBarang = nm;
+        jenisBarang = jn;
+        stok = st;
+        hargaSatuan = hs;
+    }
+```
+
+2.  Perhatikan class **BarangMain** di Praktikum 2.4.1, apa sebenarnya yang dilakukan pada baris program dibawah ini?
+    `Barang b2 = new Barang("Logitech", "Wireless Mouse", 150000, 25);`
+
+    **Jawab:** Penggunaan konstruktor berparameter pada saat instansiasi objek
+
+3.  Coba buat objek dengan nama **b3** dengan menggunakan konstruktor berparameter dari class **Barang**.
+
+```
+Barang b3 = new Barang("Razer", "Headphone", 5, 450000);
+b3.tampilBarang();
+```
+
+**2.5 Latihan Praktikum**
+
+1. Buat program berdasarkan diagram class berikut ini!
+
+| Barang |
+| ----------------------------------------------------------------------- |
+| nama: String
+hargaSatuan: int
+jumlah: int  
+| ----------------------------------------------------------------------- |
+| hitungHargaTotal(): int
+hitungDiskon(): int
+hitungHargaBayar(): int |
+
+- Method hitungHargaTotal() digunakan untuk menghitung harga total yang merupakan perkalian antara hargaSatuan dengan jumlah barang yang dibeli
+- Method hitungDiskon() digunakan untuk menghitung diskon dengan aturan sbb:
+    - Jika harga total > 100000, akan mendapat diskon 10%
+    - Jika harga total mulai dari 50000 sampai 100000 akan mendapat diskon sebesar 5%
+    - Jika dibawah 50000 tidak mendapat diskon
+- Method hitungHargaBayar() digunakan untuk menghitung harga total setelah dikurangi diskon
+
+**Jawab:**
+
+- Code:
+---
+public class Tugas1 {
+
+    String namaBarang;
+    int hargaSatuan, hargaTotal, diskon;
+
+    void tampilBarang(){  
+        System.out.println("==============================");
+        System.out.println("Nama Barang = " +namaBarang);
+        System.out.println("Harga Satuan = " +hargaSatuan);
+        System.out.println("Diskon = " +diskon);
+
+        }
+
+    int hitungHargaTotal(int jumlah){
+        hargaTotal = jumlah*hargaSatuan;
+        return hargaTotal; 
+    }
+
+    int hitungDiskon(int n){
+        if(hargaTotal>100000){
+            diskon = hargaTotal * 10/100;
+            return diskon;
+        }else if(hargaTotal>=50000 && hargaTotal<=100000){
+            diskon = hargaTotal * 5/100;
+            return diskon;
+        }else if(hargaTotal <50000){
+            diskon=0;
+        }
+        return diskon;
+    }
+
+    int hitungHargaBayar(int Bayar){
+        Bayar =  hargaTotal - (int) diskon;
+        return Bayar;
+    }
+}
+
+---
+public class Tugas1Main {
+
+        public static void main(String[] args) {
+           Tugas1 a1 = new Tugas1(); 
+            a1.namaBarang = "Keyboard Gaming";
+            a1.hargaSatuan = 500000;
+            a1.hitungHargaTotal(1);
+            a1.hitungDiskon(0);
+            a1.tampilBarang();
+            int hargaTotal = a1.hitungHargaBayar(0);
+            System.out.println("Harga Akhir = "+hargaTotal);
+                   
+            Tugas1 a2 = new Tugas1();
+            a2.namaBarang = "Headphone";
+            a2.hargaSatuan = 350000;
+            a2.hitungHargaTotal(2);
+            a2.hitungDiskon(0);
+            a2.tampilBarang();
+            hargaTotal = a2.hitungHargaBayar(0);
+             System.out.println("Harga Akhir = "+hargaTotal);
+        }
+}
+
+
+- Output :
+![Output Latihan Praktikum Nomor 2](Screenshot/2.3.jpg)
+
+2. Buat program berdasarkan diagram class berikut ini!
+
+| PacMan                                                                                   |
+| ---------------------------------------------------------------------------------------- |
+|x: int 
+y: int 
+width: int 
+height: int|                                      |
+| ---------------------------------------------------------------------------------------- |
+| moveLeft(): void 
+moveRight(): void 
+moveUp(): void 
+moveDown(): void 
+printPosition(): void |
+
+- Atribut x digunakan untuk menyimpan posisi koordinat x (mendatar) dari pacman, sedangkan atribut y untuk posisi koordinat y (vertikal)
+- Atribut width digunakan untuk menyimpan lebar dari area permainan, sedangkan height untuk menyimpan panjang area
+- Method moveLeft() digunakan untuk mengubah posisi pacman ke kiri (koordinat x akan berkurang 1), sedangkan moveRight() untuk bergerak ke kanan (koordinat x akan bertambah. Perlu diperhatikan bahwa koordinat x tidak boleh lebih kecil dari 0 atau lebih besar dari nilai width
+- Method moveUp() digunakan untuk mengubah posisi pacman ke atas (koordinat y akan berkurang 1), sedangkan moveDown() untuk bergerak ke bawah (koordinat y akan bertambah. Perlu diperhatikan bahwa koordinat y tidak boleh lebih kecil dari 0 atau lebih besar dari nilai height.
+**Jawab:**
+- Code:
+```
+public class PacMan {
+    int x,y,width,height;
+
+    void moveLeft(){
+        x-=1;
+    }
+    void moveRight(){
+        x+=1;
+    }
+    void moveUp(){
+        y-=1;
+    }
+    void moveDown(){
+        y+=1;
+    }
+    void printPosition(){
+        System.out.println("Posisi Pac Man saat ini berada di koordinat "+x+","+y);
+    }
+}
+
+class PacManMain {
+    public static void main(String args[]) {
+        
+        PacMan pc = new PacMan();
+        pc.x = 5;
+        pc.y= 3;
+        pc.width = 30;
+        pc.height = 25;
+        if(pc.x <0 || pc.x > pc.width){
+            System.exit(0);
+        }
+        if(pc.y <0 || pc.y > pc.height){
+            System.exit(0);
+        }
+        System.out.println("Posisi Awal Pac Man berada di koordinat "+pc.x+","+pc.y);
+        
+        pc.moveDown();
+        pc.moveLeft();
+        pc.moveLeft();
+        pc.moveLeft();
+        pc.printPosition();
+    }
+}
+```
+- Output : 
+![Output Latihan Praktikum Nomor 2](Screenshot/2.4.jpg)
